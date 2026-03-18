@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions | rimajin</title>
+    <meta name="description" content="Comprehensive solar, EV, generator, and core electrical solutions from rimajin.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/pages.css">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+</head>
+
+<body>
+    <!-- ════════ NAVIGATION ════════ -->
+    <nav class="nav" id="navbar">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="designGuidelines/rimajinLogo.JPG" alt="rimajin leaf logo" class="nav-logo-img">
+                <span class="nav-logo-text">rimajin</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="solutions.html" class="nav-link active">Solutions</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+            </div>
+            <div class="nav-actions">
+                <a href="#" class="nav-login" onclick="openModal('login'); return false;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                    Log In
+                </a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="nav-mobile" id="navMobile">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="solutions.html" class="nav-link active">Solutions</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="shop.html" class="nav-link">Shop</a>
+            <div class="nav-actions">
+                <a href="#" class="nav-login" onclick="openModal('login'); return false;">Log In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ════════ SOLUTIONS HERO ════════ -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-label">THE RIMAJIN APPROACH</div>
+            <h1>Comprehensive. Bespoke. Tenured.</h1>
+            <p class="page-subtitle">Applying first-principles precision to traditional utility work and modern energy
+                ecosystems.</p>
+        </div>
+    </section>
+
+    <!-- ════════ SOLUTIONS GRID ════════ -->
+    <section class="solutions-detail section">
+        <div class="container">
+            <div class="solutions-grid-2">
+                <!-- Solar -->
+                <div class="solution-detail-card">
+                    <div class="service-label"><span class="label-num">01</span> / GENERATION</div>
+                    <h3>Solar Integration</h3>
+                    <p>High-efficiency systems designed from the ground up for maximum real-world yield and thermal
+                        stability.</p>
+                    <div class="spec-rows">
+                        <div class="spec-row">
+                            <span class="spec-label">SYSTEM</span>
+                            <span class="spec-value">OFF-GRID / TIED</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">PERFORMANCE</span>
+                            <span class="spec-value">PHYSICS-LED</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EV -->
+                <div class="solution-detail-card">
+                    <div class="service-label"><span class="label-num">02</span> / MOBILITY</div>
+                    <h3>EV Infrastructure</h3>
+                    <p>Safe and efficient charging solutions for modern electric mobility, engineered for residential
+                        and commercial loads.</p>
+                    <div class="spec-rows">
+                        <div class="spec-row">
+                            <span class="spec-label">COMPATIBILITY</span>
+                            <span class="spec-value">UNIVERSAL / TESLA</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">SAFETY</span>
+                            <span class="spec-value">LOAD MANAGEMENT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Generator -->
+                <div class="solution-detail-card">
+                    <div class="service-label"><span class="label-num">03</span> / RESILIENCE</div>
+                    <h3>Generator Backup</h3>
+                    <p>Traditional standby power solutions that ensure seamless continuity when the utility grid fails.
+                    </p>
+                    <div class="spec-rows">
+                        <div class="spec-row">
+                            <span class="spec-label">CONFIGURATION</span>
+                            <span class="spec-value">WHOLE HOME / SITE</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">TRANSITION</span>
+                            <span class="spec-value">AUTO TRANSFER</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Core Electrical -->
+                <div class="solution-detail-card">
+                    <div class="service-label"><span class="label-num">04</span> / FUNDAMENTALS</div>
+                    <h3>Core Electrical</h3>
+                    <p>Reliable residential and commercial contracting for repairs, upgrades, and new project
+                        developments.</p>
+                    <div class="spec-rows">
+                        <div class="spec-row">
+                            <span class="spec-label">SPECIALIZATION</span>
+                            <span class="spec-value">SERVICE / BUILD</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-label">COMPLIANCE</span>
+                            <span class="spec-value">MULTI-STATE STANDARD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════ CTA BANNER ════════ -->
+    <section class="solutions-cta">
+        <div class="container">
+            <div class="solutions-cta-inner">
+                <h2>Custom Energy Projects</h2>
+                <p>Based in New Braunfels. Operating with a national perspective on electrical engineering.</p>
+                <a href="contact.html" class="btn btn-primary btn-lg">START INQUIRY</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════ FOOTER ════════ -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="nav-logo">
+                        <img src="designGuidelines/rimajinLogo.JPG" alt="rimajin" class="nav-logo-img">
+                        <span class="nav-logo-text">rimajin</span>
+                    </a>
+                    <p>Tenured electrical solutions in New Braunfels, TX.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Solutions</h4>
+                    <a href="solutions.html">Solar Integration</a>
+                    <a href="solutions.html">EV Infrastructure</a>
+                    <a href="solutions.html">Generator Backup</a>
+                    <a href="solutions.html">Core Electrical</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="shop.html">Shop</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <a href="tel:+18302378552">📞 (830) 237-8552</a>
+                    <a href="mailto:robert@rimajin.com">✉️ robert@rimajin.com</a>
+                    <a>📍 New Braunfels, TX</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 rimajin. All rights reserved.</p>
+                <p class="license">Licensed Electrical Contractor — State of Texas</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal-backdrop" id="modalBackdrop" onclick="closeModal()"></div>
+    <div class="modal" id="loginModal">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <h2>Welcome Back</h2>
+        <p class="subtitle">Log in to your rimajin account</p>
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group"><label for="loginEmail">Email</label><input type="email" id="loginEmail"
+                    class="form-input" placeholder="you@example.com" required></div>
+            <div class="form-group"><label for="loginPassword">Password</label><input type="password" id="loginPassword"
+                    class="form-input" placeholder="••••••••" required></div>
+            <button type="submit" class="btn btn-primary btn-lg form-submit">Log In</button>
+        </form>
+        <div class="form-toggle">Don't have an account? <a href="#"
+                onclick="switchModal('register'); return false;">Sign up</a></div>
+    </div>
+    <div class="modal" id="registerModal">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <h2>Create Account</h2>
+        <p class="subtitle">Join rimajin to book services & manage projects</p>
+        <form id="registerForm" onsubmit="handleRegister(event)">
+            <div class="form-row">
+                <div class="form-group"><label for="regFirstName">First Name</label><input type="text" id="regFirstName"
+                        class="form-input" placeholder="John" required></div>
+                <div class="form-group"><label for="regLastName">Last Name</label><input type="text" id="regLastName"
+                        class="form-input" placeholder="Doe" required></div>
+            </div>
+            <div class="form-group"><label for="regEmail">Email</label><input type="email" id="regEmail"
+                    class="form-input" placeholder="you@example.com" required></div>
+            <div class="form-group"><label for="regPhone">Phone</label><input type="tel" id="regPhone"
+                    class="form-input" placeholder="(830) 237-8552"></div>
+            <div class="form-group"><label for="regPassword">Password</label><input type="password" id="regPassword"
+                    class="form-input" placeholder="Min. 8 characters" required minlength="8"></div>
+            <button type="submit" class="btn btn-primary btn-lg form-submit">Create Account</button>
+        </form>
+        <div class="form-toggle">Already have an account? <a href="#" onclick="switchModal('login'); return false;">Log
+                in</a></div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+
+</html>

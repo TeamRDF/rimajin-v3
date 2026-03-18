@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | rimajin</title>
+    <meta name="description" content="Manage your rimajin account — book services, request quotes, and view invoices.">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/dashboard.css">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+</head>
+
+<body>
+    <!-- ════════ NAVIGATION ════════ -->
+    <nav class="nav scrolled" id="navbar">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="designGuidelines/rimajinLogo.JPG" alt="rimajin leaf logo" class="nav-logo-img">
+                <span class="nav-logo-text">rimajin</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="solutions.html" class="nav-link">Solutions</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="shop.html" class="nav-link">Shop</a>
+            </div>
+            <div class="nav-actions">
+                <a href="dashboard.html" class="nav-login dash-nav-active">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                    Dashboard
+                </a>
+                <span class="nav-user-name" id="userNameBtn"></span>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+        <div class="nav-mobile" id="navMobile">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="solutions.html" class="nav-link">Solutions</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+            <a href="shop.html" class="nav-link">Shop</a>
+            <div class="nav-actions">
+                <a href="dashboard.html" class="nav-login">Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ════════ DASHBOARD ════════ -->
+    <main class="dashboard" id="dashboard">
+        <!-- Sidebar -->
+        <aside class="dash-sidebar" id="dashSidebar">
+            <div class="dash-user">
+                <div class="dash-avatar" id="dashAvatar">UN</div>
+                <div class="dash-user-info">
+                    <div class="dash-user-name" id="dashUserName">User Name</div>
+                    <div class="dash-user-email" id="dashUserEmail">user@email.com</div>
+                </div>
+            </div>
+
+            <nav class="dash-nav">
+                <button class="dash-nav-item active" data-panel="overview" onclick="switchPanel('overview')">
+                    <span class="dash-nav-icon">📊</span>
+                    Overview
+                </button>
+                <button class="dash-nav-item" data-panel="book" onclick="switchPanel('book')">
+                    <span class="dash-nav-icon">📅</span>
+                    Book Service
+                </button>
+                <button class="dash-nav-item" data-panel="quotes" onclick="switchPanel('quotes')">
+                    <span class="dash-nav-icon">📝</span>
+                    Request Quote
+                </button>
+                <button class="dash-nav-item" data-panel="invoices" onclick="switchPanel('invoices')">
+                    <span class="dash-nav-icon">💳</span>
+                    Invoices
+                </button>
+                <button class="dash-nav-item" data-panel="settings" onclick="switchPanel('settings')">
+                    <span class="dash-nav-icon">⚙️</span>
+                    Settings
+                </button>
+            </nav>
+
+            <button class="dash-logout" onclick="handleLogout()">
+                🚪 Log Out
+            </button>
+        </aside>
+
+        <!-- Content Area -->
+        <div class="dash-content">
+            <!-- ─── Overview Panel ─── -->
+            <div class="dash-panel active" id="panel-overview">
+                <div class="dash-header">
+                    <div>
+                        <h1>Welcome back, <span class="text-green" id="welcomeName">User</span></h1>
+                        <p class="dash-subtitle">Here's a snapshot of your account activity.</p>
+                    </div>
+                    <button class="btn btn-primary btn-sm" onclick="switchPanel('book')">+ Book Service</button>
+                </div>
+
+                <div class="dash-stats">
+                    <div class="dash-stat-card">
+                        <div class="dash-stat-icon" style="background:rgba(45,140,45,0.1);color:#2D8C2D;">📅</div>
+                        <div class="dash-stat-info">
+                            <div class="dash-stat-number" id="statBookings">0</div>
+                            <div class="dash-stat-label">Upcoming Bookings</div>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dash-stat-icon" style="background:rgba(245,158,11,0.1);color:#d97706;">📝</div>
+                        <div class="dash-stat-info">
+                            <div class="dash-stat-number" id="statQuotes">0</div>
+                            <div class="dash-stat-label">Pending Quotes</div>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dash-stat-icon" style="background:rgba(239,68,68,0.1);color:#ef4444;">💳</div>
+                        <div class="dash-stat-info">
+                            <div class="dash-stat-number" id="statInvoices">$0</div>
+                            <div class="dash-stat-label">Outstanding Balance</div>
+                        </div>
+                    </div>
+                    <div class="dash-stat-card">
+                        <div class="dash-stat-icon" style="background:rgba(16,185,129,0.1);color:#10b981;">✓</div>
+                        <div class="dash-stat-info">
+                            <div class="dash-stat-number" id="statCompleted">0</div>
+                            <div class="dash-stat-label">Completed Projects</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dash-grid">
+                    <!-- Recent Activity -->
+                    <div class="dash-card">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-list" id="activityList">
+                            <div class="activity-empty">No recent activity. Book a service or request a quote to get
+                                started.</div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="dash-card">
+                        <h3>Quick Actions</h3>
+                        <div class="quick-actions">
+                            <button class="quick-action" onclick="switchPanel('book')">
+                                <span class="quick-icon">📅</span>
+                                <span>Book a Service</span>
+                            </button>
+                            <button class="quick-action" onclick="switchPanel('quotes')">
+                                <span class="quick-icon">📝</span>
+                                <span>Request Quote</span>
+                            </button>
+                            <button class="quick-action" onclick="switchPanel('invoices')">
+                                <span class="quick-icon">💳</span>
+                                <span>Pay Invoice</span>
+                            </button>
+                            <button class="quick-action" onclick="window.location.href='contact.html'">
+                                <span class="quick-icon">📞</span>
+                                <span>Contact Us</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── Book Service Panel ─── -->
+            <div class="dash-panel" id="panel-book">
+                <div class="dash-header">
+                    <div>
+                        <h1>Book a <span class="text-green">Service</span></h1>
+                        <p class="dash-subtitle">Schedule an appointment with our electricians.</p>
+                    </div>
+                </div>
+
+                <div class="dash-form-container">
+                    <form id="bookingForm" onsubmit="handleBooking(event)" class="dash-form">
+                        <div class="form-group">
+                            <label for="bookService">Service Type</label>
+                            <select id="bookService" class="form-input" required>
+                                <option value="">Select a service…</option>
+                                <option value="solar">☀️ Solar Integration</option>
+                                <option value="ev">🔌 EV Charger Installation</option>
+                                <option value="residential">🏠 Residential Electrical</option>
+                                <option value="commercial">🏢 Commercial Electrical</option>
+                                <option value="generator">⚡ Generator Installation</option>
+                                <option value="inspection">🔍 Electrical Inspection</option>
+                                <option value="troubleshoot">🔧 Troubleshooting / Repair</option>
+                                <option value="other">📋 Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bookDate">Preferred Date</label>
+                                <input type="date" id="bookDate" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookTime">Preferred Time</label>
+                                <select id="bookTime" class="form-input" required>
+                                    <option value="">Select time…</option>
+                                    <option value="morning">Morning (8am – 12pm)</option>
+                                    <option value="afternoon">Afternoon (12pm – 4pm)</option>
+                                    <option value="evening">Evening (4pm – 7pm)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bookAddress">Service Address</label>
+                            <input type="text" id="bookAddress" class="form-input"
+                                placeholder="123 Main St, New Braunfels, TX 78130" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bookNotes">Additional Details</label>
+                            <textarea id="bookNotes" class="form-input"
+                                placeholder="Describe the work needed, access details, etc." rows="4"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg form-submit">📅 Confirm Booking</button>
+                    </form>
+
+                    <!-- Booking History -->
+                    <div class="dash-card" style="margin-top: 24px;">
+                        <h3>Your Bookings</h3>
+                        <div id="bookingsList" class="items-list">
+                            <div class="activity-empty">No bookings yet.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── Quote Request Panel ─── -->
+            <div class="dash-panel" id="panel-quotes">
+                <div class="dash-header">
+                    <div>
+                        <h1>Request a <span class="text-green">Quote</span></h1>
+                        <p class="dash-subtitle">Tell us about your project and we'll provide a detailed estimate.</p>
+                    </div>
+                </div>
+
+                <div class="dash-form-container">
+                    <form id="quoteForm" onsubmit="handleQuote(event)" class="dash-form">
+                        <div class="form-group">
+                            <label for="quoteService">Project Type</label>
+                            <select id="quoteService" class="form-input" required>
+                                <option value="">Select project type…</option>
+                                <option value="solar-res">☀️ Residential Solar System</option>
+                                <option value="solar-com">☀️ Commercial Solar System</option>
+                                <option value="ev-res">🔌 Residential EV Charger</option>
+                                <option value="ev-com">🔌 Commercial EV Station</option>
+                                <option value="panel-upgrade">⚡ Panel Upgrade</option>
+                                <option value="rewire">🏠 Whole-Home Rewire</option>
+                                <option value="generator">⚡ Generator System</option>
+                                <option value="new-construction">🏗️ New Construction</option>
+                                <option value="commercial-buildout">🏢 Commercial Build-Out</option>
+                                <option value="other">📋 Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="quoteAddress">Project Address</label>
+                            <input type="text" id="quoteAddress" class="form-input"
+                                placeholder="123 Main St, New Braunfels, TX 78130" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="quoteBudget">Estimated Budget</label>
+                                <select id="quoteBudget" class="form-input">
+                                    <option value="">Select range…</option>
+                                    <option value="under-1k">Under $1,000</option>
+                                    <option value="1k-5k">$1,000 – $5,000</option>
+                                    <option value="5k-10k">$5,000 – $10,000</option>
+                                    <option value="10k-25k">$10,000 – $25,000</option>
+                                    <option value="25k+">$25,000+</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="quoteTimeline">Desired Timeline</label>
+                                <select id="quoteTimeline" class="form-input">
+                                    <option value="">Select timeline…</option>
+                                    <option value="asap">ASAP</option>
+                                    <option value="1-2weeks">1 – 2 Weeks</option>
+                                    <option value="1month">Within a Month</option>
+                                    <option value="flexible">Flexible</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="quoteDetails">Project Details</label>
+                            <textarea id="quoteDetails" class="form-input"
+                                placeholder="Describe your project: scope of work, existing electrical setup, special requirements, etc."
+                                rows="5" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Attach Photos (optional)</label>
+                            <div class="file-upload" id="fileUpload">
+                                <div class="file-upload-zone" onclick="document.getElementById('quoteFiles').click()">
+                                    <span class="file-upload-icon">📸</span>
+                                    <span>Click to upload or drag photos here</span>
+                                    <span class="file-upload-hint">JPG, PNG up to 10MB each</span>
+                                </div>
+                                <input type="file" id="quoteFiles" multiple accept="image/*" style="display:none"
+                                    onchange="handleFileSelect(this)">
+                                <div id="fileList" class="file-list"></div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg form-submit">📝 Submit Quote
+                            Request</button>
+                    </form>
+
+                    <!-- Quote History -->
+                    <div class="dash-card" style="margin-top: 24px;">
+                        <h3>Your Quote Requests</h3>
+                        <div id="quotesList" class="items-list">
+                            <div class="activity-empty">No quote requests yet.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── Invoices Panel ─── -->
+            <div class="dash-panel" id="panel-invoices">
+                <div class="dash-header">
+                    <div>
+                        <h1>Your <span class="text-green">Invoices</span></h1>
+                        <p class="dash-subtitle">View and pay outstanding invoices.</p>
+                    </div>
+                </div>
+
+                <div class="invoices-container">
+                    <div class="invoices-summary">
+                        <div class="invoice-summary-item">
+                            <span class="summary-label">Total Outstanding</span>
+                            <span class="summary-value text-green" id="totalOutstanding">$0.00</span>
+                        </div>
+                        <div class="invoice-summary-item">
+                            <span class="summary-label">Total Paid</span>
+                            <span class="summary-value" style="color:#10b981;" id="totalPaid">$0.00</span>
+                        </div>
+                    </div>
+
+                    <div id="invoicesList" class="invoices-list">
+                        <div class="activity-empty">No invoices found.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── Settings Panel ─── -->
+            <div class="dash-panel" id="panel-settings">
+                <div class="dash-header">
+                    <div>
+                        <h1>Account <span class="text-green">Settings</span></h1>
+                        <p class="dash-subtitle">Update your personal information.</p>
+                    </div>
+                </div>
+
+                <div class="dash-form-container">
+                    <form id="settingsForm" onsubmit="handleSettings(event)" class="dash-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="settingsFirstName">First Name</label>
+                                <input type="text" id="settingsFirstName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="settingsLastName">Last Name</label>
+                                <input type="text" id="settingsLastName" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="settingsEmail">Email</label>
+                            <input type="email" id="settingsEmail" class="form-input" readonly
+                                style="opacity:0.6;cursor:not-allowed;">
+                        </div>
+                        <div class="form-group">
+                            <label for="settingsPhone">Phone</label>
+                            <input type="tel" id="settingsPhone" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="settingsAddress">Default Address</label>
+                            <input type="text" id="settingsAddress" class="form-input"
+                                placeholder="Your default service address">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg form-submit">Save Changes</button>
+                    </form>
+
+                    <div class="dash-card" style="margin-top: 24px;">
+                        <h3 style="color:#ef4444;">Danger Zone</h3>
+                        <p style="font-size:0.85rem;color:var(--color-text-muted);margin:12px 0;">This
+                            action cannot be undone.</p>
+                        <button class="btn btn-secondary btn-sm" style="border-color:#ef4444;color:#ef4444;"
+                            onclick="deleteAccount()">Delete Account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Payment Modal -->
+    <div class="modal-backdrop" id="modalBackdrop" onclick="closePaymentModal()"></div>
+    <div class="modal" id="paymentModal">
+        <button class="modal-close" onclick="closePaymentModal()">✕</button>
+        <h2>Pay Invoice</h2>
+        <p class="subtitle" id="paymentInvoiceId">INV-000</p>
+
+        <div class="payment-amount" id="paymentAmount">$0.00</div>
+
+        <form id="paymentForm" onsubmit="handlePayment(event)">
+            <div class="form-group">
+                <label for="cardName">Name on Card</label>
+                <input type="text" id="cardName" class="form-input" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" class="form-input" placeholder="4242 4242 4242 4242" required
+                    maxlength="19" oninput="formatCardNumber(this)">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="cardExpiry">Expiry</label>
+                    <input type="text" id="cardExpiry" class="form-input" placeholder="MM/YY" required maxlength="5"
+                        oninput="formatExpiry(this)">
+                </div>
+                <div class="form-group">
+                    <label for="cardCvc">CVC</label>
+                    <input type="text" id="cardCvc" class="form-input" placeholder="123" required maxlength="4">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg form-submit">💳 Pay Now</button>
+        </form>
+
+        <p style="font-size:0.75rem;color:var(--color-text-muted);text-align:center;margin-top:12px;">
+            🔒 Payments are simulated for demo purposes</p>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

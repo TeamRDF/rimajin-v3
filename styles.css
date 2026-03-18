@@ -427,6 +427,57 @@ p {
 .delay-2 { transition-delay: 0.2s, 0.2s; }
 .delay-3 { transition-delay: 0.3s, 0.3s; }
 
+/* Contact Form Section */
+.contact-form-wrapper {
+    width: 100%;
+    max-width: 500px; /* Keep it narrow and intentional */
+    margin: 0 auto;
+}
+
+.minimal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.form-group {
+    width: 100%;
+    position: relative;
+}
+
+.minimal-form input,
+.minimal-form textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+    padding: 1rem 0;
+    font-family: var(--font-main);
+    font-size: 1.15rem;
+    color: var(--black);
+    transition: all 0.3s ease;
+    resize: none;
+}
+
+.minimal-form input:focus,
+.minimal-form textarea:focus {
+    outline: none;
+    border-bottom-color: var(--black);
+}
+
+.minimal-form input::placeholder,
+.minimal-form textarea::placeholder {
+    color: rgba(0,0,0,0.3);
+    font-weight: 500;
+}
+
+.submit-btn {
+    align-self: center; /* Center the button below the form */
+    margin-top: 1rem;
+    min-width: 200px;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .feature-container {
